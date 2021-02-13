@@ -20,10 +20,12 @@ class Business {
   }
   
   async _init() {
-    this.socket = await this.socketBuilder
-    .setOnUserConnected(this.onUserConnected())
-    .setOnUserDisconnected(this.onUserDisconnected())
-    .build()
+
+    this.currentStream = await this.media.getCamera()
+    this.socket = this.socketBuilder
+      .setOnUserConnected(this.onUserConnected())
+      .setOnUserDisconnected(this.onUserDisconnected())
+      .build()
     
     
     this.currentPeer = await this.peerBuilder
@@ -33,7 +35,7 @@ class Business {
       .setOnPeerStreamReceived(this.onPeerStreamReceived())
       .build()
 
-    this.currentStream = await this.media.getCamera()
+    
     this.addVideoStream('test01')
   }
 
