@@ -72,6 +72,6 @@ class View {
   }
 
   configureRecordButton(command) {
-    this.recorderBtn.addEventListener('click', this.onRecordClick(recorderBtn))
+    this.recorderBtn.addEventListener('click', this.onRecordClick(command))
   }
 }
